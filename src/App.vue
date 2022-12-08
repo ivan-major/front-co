@@ -327,6 +327,7 @@ export default {
             );
 
             this.listAddCity.push(city);
+            this.sortAddList();
         },
 
         openListDate() {
@@ -335,7 +336,7 @@ export default {
 
         openListCities() {
             this.isOpenCities = !this.isOpenCities;
-            this.listAddCity.sort((a, b) => a.name.localCompare(b.name));
+            this.sortAddList();
         },
 
         selectDate(ind) {
@@ -349,6 +350,12 @@ export default {
                 (item) => item.id !== city.id
             );
             this.citiesWithTemp.push(city);
+        },
+
+        sortAddList() {
+            if (this.listAddCity.length > 1) {
+                this.listAddCity.sort((a, b) => a.name.localeCompare(b.name));
+            }
         },
 
         sortList(item) {
