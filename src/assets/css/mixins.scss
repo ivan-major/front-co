@@ -1,0 +1,20 @@
+$tablet-media: 768px;
+$desctop-media: 1200px;
+
+@mixin tabl {
+    @media screen and (min-width: $tablet-media) {
+        @content;
+    }
+}
+
+@mixin desc {
+    @media screen and (min-width: $desctop-media) {
+        @content;
+    }
+}
+
+@mixin hover {
+    @media screen and (hover: hover) {
+        @content;
+    }
+}
