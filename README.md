@@ -1,25 +1,14 @@
-# front-co
+# front-co Test task (pet-project).
 
-## Project setup
-```
-npm install
-```
+Weather APP
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Application is showing temperature of biggest cities of Ukraine up to 7 days.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Functionality: changing dates, adding and remuwing cities from list, sorting list
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# front-co
+Tecnologies:
+- Vue 2,
+- HTML
+- SCSS,
+- BEM,
+- Fetchig data from API https://open-meteo.com/en/docs#api_form
