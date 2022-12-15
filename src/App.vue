@@ -87,18 +87,36 @@
                     @click="sortList('name')"
                 >
                     City
+                    <div class="sort" :class="!sortName && 'sort_down'">
+                        <img
+                            src="./assets/svg/arrow-long-up.svg"
+                            alt="arrow-long-up"
+                        />
+                    </div>
                 </div>
                 <div
                     class="temp__main text text_header"
                     @click="sortList('min')"
                 >
                     Min °C
+                    <div class="sort" :class="sortMin && 'sort_down'">
+                        <img
+                            src="./assets/svg/arrow-long-up.svg"
+                            alt="arrow-long-up"
+                        />
+                    </div>
                 </div>
                 <div
                     class="temp__main text text_header"
                     @click="sortList('max')"
                 >
                     Max °C
+                    <div class="sort" :class="sortMax && 'sort_down'">
+                        <img
+                            src="./assets/svg/arrow-long-up.svg"
+                            alt="arrow-long-up"
+                        />
+                    </div>
                 </div>
                 <div class="temp__main text text_header"></div>
             </div>
@@ -350,6 +368,8 @@ export default {
                 (item) => item.id !== city.id
             );
             this.citiesWithTemp.push(city);
+            this.sortName = false;
+            this.sortList("name");
         },
 
         sortAddList() {
@@ -402,6 +422,9 @@ export default {
 
                 this.sortMax = !this.sortMax;
             }
+
+            console.log(this.citiesWithTemp);
+            console.log(this.sortName);
         },
     },
     created() {
@@ -409,6 +432,7 @@ export default {
             const temp = await this.request(city.latitude, city.longitude);
             this.citiesWithTemp.push({ ...city, ...temp });
             this.time = temp.daily.time;
+            this.sortList("name");
         });
     },
 };
@@ -461,6 +485,8 @@ export default {
     }
 
     &__main {
+        display: flex;
+
         flex: 1;
 
         &:first-child {
@@ -613,6 +639,18 @@ export default {
     &_active {
         transform: rotate(180deg);
         transition-duration: 500ms;
+    }
+}
+
+.sort {
+    margin-left: 10px;
+
+    transition: transform 0.3s;
+    transform: rotate(0);
+
+    &_down {
+        transition: transform 0.3s;
+        transform: rotate(180deg);
     }
 }
 
